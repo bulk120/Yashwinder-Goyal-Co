@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yashwinder Goyal & Co - Financial Services & Risk Evaluation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a3a5f;
+            --secondary: #2c5aa0;
+            --accent: #e63946;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #28a745;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #ffffff;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-placeholder {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(26, 58, 95, 0.2);
+        }
+        
+        .logo-text h1 {
+            font-size: 26px;
+            margin-bottom: 5px;
+            color: var(--primary);
+            letter-spacing: 0.5px;
+        }
+        
+        .logo-text p {
+            color: var(--gray);
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-links a.active {
+            color: var(--secondary);
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .contact-header {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+        
+        .contact-header-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(44, 90, 160, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 16px;
+        }
+        
+        .contact-text p:first-child {
+            font-size: 12px;
+            color: var(--gray);
+            margin-bottom: 2px;
+        }
+        
+        .contact-text p:last-child {
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--dark);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--primary);
+            padding: 5px;
+        }
+        
+        /* Page Content */
+        .page-content {
+            display: none;
+            padding-top: 100px;
+        }
+        
+        .page-content.active {
+            display: block;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(26, 58, 95, 0.9), rgba(26, 58, 95, 0.95)), url('https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 120px 20px;
+            margin-bottom: 80px;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: white;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background-color: var(--accent);
+            color: white;
+            padding: 15px 35px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: var(--transition);
+            box-shadow: 0 6px 20px rgba(230, 57, 70, 0.3);
+        }
+        
+        .cta-button:hover {
+            background-color: #d32f2f;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(230, 57, 70, 0.4);
+        }
+        
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            display: inline-block;
+            padding-bottom: 15px;
+            position: relative;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: var(--light);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            color: #495057;
+        }
+        
+        .udyam-badge {
+            background-color: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--success);
+            margin-top: 30px;
+        }
+        
+        .udyam-badge h3 {
+            color: var(--success);
+            margin-bottom: 15px;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .badge-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .badge-item p:first-child {
+            font-weight: 600;
+            color: var(--primary);
+            font-size: 14px;
+        }
+        
+        .badge-item p:last-child {
+            color: var(--gray);
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: var(--transition);
+            border: 1px solid #e9ecef;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+            border-color: var(--secondary);
+        }
+        
+        .service-icon {
+            height: 120px;
+            background: linear-gradient(135deg, rgba(44, 90, 160, 0.1), rgba(26, 58, 95, 0.1));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: var(--secondary);
+        }
+        
+        .service-info {
+            padding: 30px;
+        }
+        
+        .service-info h3 {
+            margin-bottom: 15px;
+            font-size: 22px;
+            color: var(--primary);
+        }
+        
+        .service-info p {
+            color: var(--gray);
+            margin-bottom: 20px;
+        }
+        
+        /* Certification Section */
+        .certification {
+            background-color: var(--light);
+        }
+        
+        .certification-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .certificate-details {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+        
+        .certificate-item {
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .certificate-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .certificate-item h4 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .certificate-item p {
+            color: var(--gray);
+        }
+        
+        .certificate-badge {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(26, 58, 95, 0.2);
+        }
+        
+        .certificate-badge h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .certificate-badge .udyam-number {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 20px 0;
+            letter-spacing: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: var(--primary);
+        }
+        
+        .contact-info > p {
+            color: var(--gray);
+            margin-bottom: 30px;
+            font-size: 17px;
+        }
+        
+        .contact-details {
+            margin-top: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon-large {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(44, 90, 160, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            color: var(--secondary);
+            font-size: 22px;
+            flex-shrink: 0;
+        }
+        
+        .contact-text-large h4 {
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: var(--primary);
+        }
+        
+        .contact-text-large p {
+            color: var(--gray);
+            font-size: 16px;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid var(--secondary);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 16px 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            transition: var(--transition);
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 0 3px rgba(44, 90, 160, 0.2);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, var(--secondary), #3a6ec6);
+            color: white;
+            border: none;
+            padding: 18px 40px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 6px 20px rgba(44, 90, 160, 0.3);
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(44, 90, 160, 0.4);
+        }
+        
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(rgba(26, 58, 95, 0.9), rgba(26, 58, 95, 0.95)), url('https://images.unsplash.com/photo-1553877522-43269d4ea984?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            padding: 160px 20px 100px;
+            text-align: center;
+            color: white;
+            margin-bottom: 80px;
+        }
+        
+        .page-header h1 {
+            font-size: 48px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .page-header p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto;
+            color: rgba(255, 255, 255, 0.9);
+        }
+        
+        /* Content Blocks */
+        .content-block {
+            margin-bottom: 50px;
+        }
+        
+        .content-block h2 {
+            font-size: 32px;
+            margin-bottom: 25px;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .content-block h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background-color: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .content-block p {
+            margin-bottom: 20px;
+            color: #495057;
+            font-size: 17px;
+            line-height: 1.8;
+        }
+        
+        .content-block ul, .content-block ol {
+            margin-left: 25px;
+            margin-bottom: 25px;
+            color: #495057;
+        }
+        
+        .content-block li {
+            margin-bottom: 10px;
+            line-height: 1.7;
+        }
+        
+        .privacy-list {
+            background: var(--light);
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 30px;
+        }
+        
+        .privacy-list h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 22px;
+        }
+        
+        .privacy-list ul {
+            margin-left: 20px;
+        }
+        
+        /* Team Grid */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .team-member {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            padding: 30px;
+        }
+        
+        .team-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e2e8f0, #cbd5e0);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: var(--primary);
+        }
+        
+        .team-member h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
+        
+        .team-member p {
+            color: var(--gray);
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--primary);
+            color: white;
+            padding: 80px 0 30px;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-logo h3 {
+            color: white;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-logo p {
+            color: #a0aec0;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+        
+        .footer-links h4,
+        .footer-contact h4 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 20px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .footer-links h4::after,
+        .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary);
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+        
+        .footer-links a {
+            color: #a0aec0;
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .footer-contact p {
+            color: #a0aec0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+        
+        .footer-contact i {
+            color: var(--secondary);
+            margin-top: 4px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #a0aec0;
+            font-size: 14px;
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 100px;
+            left: 0;
+            width: 100%;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            display: none;
+            z-index: 999;
+        }
+        
+        .mobile-nav.active {
+            display: block;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            flex-direction: column;
+            gap: 0;
+        }
+        
+        .mobile-nav li {
+            margin-bottom: 20px;
+        }
+        
+        .mobile-nav a {
+            font-size: 18px;
+            display: block;
+            padding: 10px 0;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+        }
+        
+        .mobile-nav a.active {
+            color: var(--secondary);
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1100px) {
+            .contact-header {
+                display: none;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-content,
+            .certification-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h2,
+            .page-header h1 {
+                font-size: 38px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero,
+            .page-header {
+                padding: 120px 20px 60px;
+            }
+            
+            .hero h2,
+            .page-header h1 {
+                font-size: 32px;
+            }
+            
+            .hero p,
+            .page-header p {
+                font-size: 18px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .badge-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form {
+                padding: 30px 25px;
+            }
+            
+            .content-block h2 {
+                font-size: 26px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text h1 {
+                font-size: 22px;
+            }
+            
+            .hero h2,
+            .page-header h1 {
+                font-size: 28px;
+            }
+            
+            .certificate-badge {
+                padding: 30px 20px;
+            }
+            
+            .certificate-badge h3 {
+                font-size: 24px;
+            }
+            
+            .certificate-badge .udyam-number {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-area">
+                <div class="logo-placeholder">
+                    YG
+                </div>
+                <div class="logo-text">
+                    <h1>Yashwinder Goyal & Co</h1>
+                    <p>Financial Services & Risk Evaluation</p>
+                </div>
+            </div>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                    <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                    <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                    <li><a href="#" class="nav-link" data-page="privacy">Privacy Policy</a></li>
+                </ul>
+                
+                <div class="contact-header">
+                    <div class="contact-header-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <div class="contact-text">
+                            <p>Call Us</p>
+                            <p>98140 42346</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-header-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="contact-text">
+                            <p>Email Us</p>
+                            <p>yashwinder.goyal@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div class="mobile-nav" id="mobileNav">
+            <ul>
+                <li><a href="#" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#" class="nav-link" data-page="about">About</a></li>
+                <li><a href="#" class="nav-link" data-page="contact">Contact</a></li>
+                <li><a href="#" class="nav-link" data-page="privacy">Privacy Policy</a></li>
+            </ul>
+            
+            <div class="contact-details" style="padding: 20px 0 0; border-top: 1px solid #e9ecef; margin-top: 20px;">
+                <div class="contact-item">
+                    <div class="contact-icon-large">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-text-large">
+                        <h4>Call Us</h4>
+                        <p>98140 42346</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon-large">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-text-large">
+                        <h4>Email Us</h4>
+                        <p>yashwinder.goyal@gmail.com</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon-large">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-text-large">
+                        <h4>Location</h4>
+                        <p>Sangrur, Punjab, India</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <div id="home-page" class="page-content active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="container">
+                    <h2>Professional Financial Services & Risk Evaluation</h2>
+                    <p>Yashwinder Goyal & Co is a registered MSME enterprise providing expert financial services and risk assessment solutions since 1999. Trusted by clients across Punjab for reliable and accurate financial evaluations.</p>
+                    <a href="#" class="cta-button" data-page="contact">
+                        <i class="fas fa-phone-alt"></i> Contact Us Today
+                    </a>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="about">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>About Our Company</h2>
+                    </div>
+                    
+                    <div class="about-content">
+                        <div class="about-text">
+                            <p>Yashwinder Goyal & Co is a Micro Enterprise registered under the MSME (Micro, Small & Medium Enterprises) category, specializing in financial services with a focus on risk and damage evaluation. Established in 1999, we have been serving clients with professionalism and expertise for over two decades.</p>
+                            
+                            <div class="udyam-badge">
+                                <h3><i class="fas fa-certificate"></i> MSME Registered Enterprise</h3>
+                                <p>Recognized by the Ministry of Micro, Small & Medium Enterprises, Government of India</p>
+                                
+                                <div class="badge-details">
+                                    <div class="badge-item">
+                                        <p>Enterprise Type</p>
+                                        <p>Micro Enterprise</p>
+                                    </div>
+                                    
+                                    <div class="badge-item">
+                                        <p>Major Activity</p>
+                                        <p>Services</p>
+                                    </div>
+                                    
+                                    <div class="badge-item">
+                                        <p>Registration Date</p>
+                                        <p>18 May 2021</p>
+                                    </div>
+                                    
+                                    <div class="badge-item">
+                                        <p>Established Since</p>
+                                        <p>23 May 1999</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="about-image">
+                            <div style="background: linear-gradient(135deg, #e2e8f0, #cbd5e0); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
+                                <div style="text-align: center; padding: 20px;">
+                                    <i class="fas fa-chart-line" style="font-size: 100px; color: var(--primary); opacity: 0.7; margin-bottom: 20px;"></i>
+                                    <h3 style="color: var(--primary);">Over 20 Years of Excellence</h3>
+                                    <p style="color: var(--gray); margin-top: 10px;">Providing reliable financial services since 1999</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section>
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Our Services</h2>
+                    </div>
+                    
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div class="service-info">
+                                <h3>Risk Evaluation</h3>
+                                <p>Comprehensive risk assessment and analysis for financial instruments, investments, and business ventures. We help identify potential risks and provide mitigation strategies.</p>
+                                <ul style="color: var(--gray); margin-top: 15px; padding-left: 20px;">
+                                    <li>Financial risk assessment</li>
+                                    <li>Investment risk analysis</li>
+                                    <li>Business venture evaluation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div class="service-info">
+                                <h3>Damage Assessment</h3>
+                                <p>Professional evaluation of financial damages for insurance claims, legal cases, and business disputes. Accurate calculations and detailed reporting.</p>
+                                <ul style="color: var(--gray); margin-top: 15px; padding-left: 20px;">
+                                    <li>Insurance claim evaluation</li>
+                                    <li>Legal damage assessment</li>
+                                    <li>Business loss calculation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <div class="service-info">
+                                <h3>Financial Consultation</h3>
+                                <p>Expert financial advice and consultation services for individuals and businesses. We help clients make informed financial decisions.</p>
+                                <ul style="color: var(--gray); margin-top: 15px; padding-left: 20px;">
+                                    <li>Financial planning</li>
+                                    <li>Investment advisory</li>
+                                    <li>Business financial consultation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certification Section -->
+            <section class="certification">
+                <div class="container">
+                    <div class="section-title">
+                        <h2>Official Certification</h2>
+                    </div>
+                    
+                    <div class="certification-content">
+                        <div class="certificate-details">
+                            <div class="certificate-item">
+                                <h4>Udyam Registration Details</h4>
+                                <p>Yashwinder Goyal & Co is officially registered under the Udyam Registration Scheme of the Government of India, Ministry of Micro, Small & Medium Enterprises (MSME).</p>
+                            </div>
+                            
+                            <div class="certificate-item">
+                                <h4>Registration Information</h4>
+                                <p><strong>Udyam Registration Number:</strong> UDYAM-PB-19-0005943</p>
+                                <p><strong>Date of Registration:</strong> 18 May 2021</p>
+                                <p><strong>Date of Commencement:</strong> 23 May 1999</p>
+                                <p><strong>NIC Code:</strong> 66210 - Risk and Damage Evaluation</p>
+                            </div>
+                            
+                            <div class="certificate-item">
+                                <h4>Enterprise Classification</h4>
+                                <p><strong>Type:</strong> Micro Enterprise</p>
+                                <p><strong>Major Activity:</strong> Services</p>
+                                <p><strong>Social Category:</strong> General</p>
+                                <p><strong>Udyam Aadhaar Memorandum:</strong> PB19D009170</p>
+                            </div>
+                        </div>
+                        
+                        <div class="certificate-badge">
+                            <h3>MSME Registered</h3>
+                            <i class="fas fa-award" style="font-size: 60px; margin-bottom: 20px;"></i>
+                            <p>Government of India</p>
+                            <p>Ministry of MSME</p>
+                            <div class="udyam-number">UDYAM-PB-19-0005943</div>
+                            <p>Valid Udyam Registration</p>
+                            <p style="font-size: 14px; margin-top: 20px; opacity: 0.9;">Registered since 18 May 2021</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page-content">
+            <div class="page-header">
+                <div class="container">
+                    <h1>About Us</h1>
+                    <p>Learn about our company, mission, and commitment to excellence in financial services</p>
+                </div>
+            </div>
+            
+            <section>
+                <div class="container">
+                    <div class="content-block">
+                        <h2>Our Story</h2>
+                        <p>Yashwinder Goyal & Co was established on May 23, 1999, in Sangrur, Punjab. Founded with a vision to provide reliable and professional financial services, the company has grown steadily over the years to become a trusted name in risk evaluation and financial assessment services.</p>
+                        <p>Our journey began with a focus on serving local businesses and individuals, and over time, we expanded our services to cater to clients across Punjab and neighboring states. With our Udyam registration in 2021, we formalized our commitment to operating as a recognized MSME enterprise under the Government of India's initiative.</p>
+                    </div>
+                    
+                    <div class="content-block">
+                        <h2>Our Mission & Values</h2>
+                        <p><strong>Mission:</strong> To provide accurate, reliable, and timely financial assessment services that help clients make informed decisions and mitigate risks effectively.</p>
+                        <p><strong>Vision:</strong> To be the preferred choice for risk evaluation and financial assessment services in Northern India, recognized for our expertise, integrity, and client-centric approach.</p>
+                        
+                        <div class="privacy-list" style="margin-top: 30px;">
+                            <h3>Core Values</h3>
+                            <ul>
+                                <li><strong>Integrity:</strong> We conduct all our business with honesty and transparency.</li>
+                                <li><strong>Accuracy:</strong> We ensure precise and thorough assessments in all our services.</li>
+                                <li><strong>Reliability:</strong> Clients can depend on us for consistent and timely service delivery.</li>
+                                <li><strong>Confidentiality:</strong> We maintain strict confidentiality of all client information.</li>
+                                <li><strong>Professionalism:</strong> We uphold the highest standards of professional conduct.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="content-block">
+                        <h2>Enterprise Details</h2>
+                        <div class="certificate-details" style="margin-top: 20px;">
+                            <div class="certificate-item">
+                                <h4>Official Registration Information</h4>
+                                <p><strong>Udyam Registration Number:</strong> UDYAM-PB-19-0005943</p>
+                                <p><strong>Udyam Aadhaar Memorandum:</strong> PB19D009170</p>
+                                <p><strong>Date of Registration:</strong> 18 May 2021</p>
+                                <p><strong>Date of Commencement:</strong> 23 May 1999</p>
+                            </div>
+                            
+                            <div class="certificate-item">
+                                <h4>Business Classification</h4>
+                                <p><strong>Type of Enterprise:</strong> Micro Enterprise</p>
+                                <p><strong>Major Activity:</strong> Services</p>
+                                <p><strong>Social Category:</strong> General</p>
+                                <p><strong>NIC Code:</strong> 66210 - Risk and Damage Evaluation</p>
+                            </div>
+                            
+                            <div class="certificate-item">
+                                <h4>Location & Contact</h4>
+                                <p><strong>Address:</strong> Office Colony, Nanaklana Road, Sangrur, Punjab - 148001</p>
+                                <p><strong>Mobile:</strong> 98140 42346</p>
+                                <p><strong>Email:</strong> yashwinder.goyal@gmail.com</p>
+                                <p><strong>District Industries Centre:</strong> Malerkotla, Punjab</p>
+                                <p><strong>MSME-DI:</strong> Ludhiana, Punjab</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="content-block">
+                        <h2>Why Choose Us?</h2>
+                        <div class="services-grid">
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-user-tie"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Expertise & Experience</h3>
+                                    <p>With over 20 years of experience in financial services, we bring deep expertise and practical knowledge to every assessment. Our team understands the nuances of risk evaluation in various contexts.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-certificate"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Official Recognition</h3>
+                                    <p>As a registered MSME enterprise under the Udyam scheme, we operate with government recognition and compliance. Our official registration adds credibility and trust to our services.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="service-card">
+                                <div class="service-icon">
+                                    <i class="fas fa-handshake"></i>
+                                </div>
+                                <div class="service-info">
+                                    <h3>Client-Focused Approach</h3>
+                                    <p>We prioritize our clients' needs and work closely with them to understand their specific requirements. Our personalized approach ensures solutions that are tailored to each client's situation.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page-content">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Contact Us</h1>
+                    <p>Get in touch with us for professional financial services and risk evaluation</p>
+                </div>
+            </div>
+            
+            <section>
+                <div class="container">
+                    <div class="contact-container">
+                        <div class="contact-info">
+                            <h3>Contact Information</h3>
+                            <p>We're here to assist you with all your financial service needs. Feel free to reach out to us through any of the following channels.</p>
+                            
+                            <div class="contact-details">
+                                <div class="contact-item">
+                                    <div class="contact-icon-large">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div class="contact-text-large">
+                                        <h4>Phone Number</h4>
+                                        <p>98140 42346</p>
+                                        <p style="font-size: 14px; margin-top: 5px;">Available during business hours</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon-large">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-text-large">
+                                        <h4>Email Address</h4>
+                                        <p>yashwinder.goyal@gmail.com</p>
+                                        <p style="font-size: 14px; margin-top: 5px;">We respond within 24 hours</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon-large">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-text-large">
+                                        <h4>Business Address</h4>
+                                        <p>Office Colony, Nanaklana Road, Sangrur, Punjab, India - 148001</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon-large">
+                                        <i class="fas fa-building"></i>
+                                    </div>
+                                    <div class="contact-text-large">
+                                        <h4>Government Contacts</h4>
+                                        <p><strong>District Industries Centre:</strong> Malerkotla, Punjab</p>
+                                        <p><strong>MSME-DI:</strong> Ludhiana, Punjab</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="udyam-badge" style="margin-top: 30px;">
+                                <h3><i class="fas fa-info-circle"></i> For Quick Inquiries</h3>
+                                <p>Please include the following information in your inquiry for faster response:</p>
+                                <ul style="margin-top: 10px; margin-left: 20px; color: var(--gray);">
+                                    <li>Type of service required (Risk Evaluation, Damage Assessment, etc.)</li>
+                                    <li>Brief description of your requirements</li>
+                                    <li>Your contact information</li>
+                                    <li>Any specific deadlines or timelines</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-form">
+                            <h3 style="margin-bottom: 25px; color: var(--primary);">Send Us a Message</h3>
+                            <form id="contactPageForm">
+                                <div class="form-group">
+                                    <label for="contact-name">Full Name *</label>
+                                    <input type="text" id="contact-name" class="form-control" placeholder="Enter your name" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contact-email">Email Address *</label>
+                                    <input type="email" id="contact-email" class="form-control" placeholder="Enter your email" required>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contact-phone">Phone Number</label>
+                                    <input type="tel" id="contact-phone" class="form-control" placeholder="Enter your phone number">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contact-company">Company/Organization</label>
+                                    <input type="text" id="contact-company" class="form-control" placeholder="Your company name (if applicable)">
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contact-subject">Service Required *</label>
+                                    <select id="contact-subject" class="form-control" required>
+                                        <option value="">Select a service</option>
+                                        <option value="risk-evaluation">Risk Evaluation</option>
+                                        <option value="damage-assessment">Damage Assessment</option>
+                                        <option value="financial-consultation">Financial Consultation</option>
+                                        <option value="other">Other Inquiry</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="contact-message">Message *</label>
+                                    <textarea id="contact-message" class="form-control" placeholder="Please provide details about your inquiry..." rows="5" required></textarea>
+                                </div>
+                                
+                                <button type="submit" class="submit-btn">
+                                    <i class="fas fa-paper-plane"></i> Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="content-block" style="margin-top: 80px;">
+                        <h2>Frequently Asked Questions</h2>
+                        
+                        <div class="certificate-details" style="margin-top: 20px;">
+                            <div class="certificate-item">
+                                <h4>What services do you provide?</h4>
+                                <p>We specialize in Risk Evaluation, Damage Assessment, and Financial Consultation services. Our expertise covers financial risk analysis, insurance claim evaluations, and professional financial advice.</p>
+                            </div>
+                            
+                            <div class="certificate-item">
+                                <h4>Are you a registered business?</h4>
+                                <p>Yes, we are a registered Micro Enterprise under the MSME category with Udyam Registration Number: UDYAM-PB-19-0005943. We have been in business since 1999 and officially registered under the Udyam scheme in 2021.</p>
+                            </div>
+                            
+                            <div class="certificate-item">
+                                <h4>What is your service area?</h4>
+                                <p>While we are based in Sangrur, Punjab, we serve clients across Punjab and neighboring states. For specific projects, we may consider serving clients in other parts of India as well.</p>
+                            </div>
+                            
+                            <div class="certificate-item">
+                                <h4>How long does an assessment typically take?</h4>
+                                <p>The timeframe depends on the complexity of the assessment. Simple evaluations may take a few days, while comprehensive risk assessments may take 1-2 weeks. We provide estimated timelines during our initial consultation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Privacy Policy Page -->
+        <div id="privacy-page" class="page-content">
+            <div class="page-header">
+                <div class="container">
+                    <h1>Privacy Policy</h1>
+                    <p>Our commitment to protecting your personal information and data privacy</p>
+                </div>
+            </div>
+            
+            <section>
+                <div class="container">
+                    <div class="privacy-content">
+                        <div class="content-block">
+                            <h2>Introduction</h2>
+                            <p>At Yashwinder Goyal & Co, we are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you interact with us for business purposes.</p>
+                            <p>By using our services or providing us with your personal information, you agree to the terms of this Privacy Policy.</p>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h2>Information We Collect</h2>
+                            <p>We may collect the following types of information:</p>
+                            
+                            <div class="privacy-list">
+                                <h3>Personal Information</h3>
+                                <ul>
+                                    <li><strong>Contact Information:</strong> Name, email address, phone number, company name, and address</li>
+                                    <li><strong>Business Information:</strong> GST details, business type, and industry information</li>
+                                    <li><strong>Communication Data:</strong> Correspondence with us through email, phone, or contact forms</li>
+                                    <li><strong>Service Information:</strong> Details about the financial services you require from us</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="privacy-list">
+                                <h3>Automatically Collected Information</h3>
+                                <ul>
+                                    <li><strong>Website Usage Data:</strong> Information about how you interact with our website</li>
+                                    <li><strong>Device Information:</strong> IP address, browser type, operating system, and device identifiers</li>
+                                    <li><strong>Cookies:</strong> Small data files stored on your device to enhance website functionality</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h2>How We Use Your Information</h2>
+                            <p>We use the collected information for the following purposes:</p>
+                            <ul>
+                                <li>To provide and maintain our financial services</li>
+                                <li>To process your inquiries, requests, and service requirements</li>
+                                <li>To communicate with you about our services and updates</li>
+                                <li>To improve our services and customer experience</li>
+                                <li>To comply with legal obligations and business requirements</li>
+                                <li>To prevent fraud and enhance security</li>
+                                <li>To maintain records as required by MSME regulations</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h2>Information Sharing and Disclosure</h2>
+                            <p>We do not sell, trade, or rent your personal information to third parties. We may share your information in the following circumstances:</p>
+                            
+                            <div class="privacy-list">
+                                <h3>Service Providers</h3>
+                                <p>We may share information with trusted third-party service providers who assist us in operating our business, such as:</p>
+                                <ul>
+                                    <li>IT service providers for website maintenance</li>
+                                    <li>Professional consultants for specific service requirements</li>
+                                    <li>Legal advisors when required</li>
+                                </ul>
+                                <p>These providers are contractually obligated to protect your information and use it only for the services they provide to us.</p>
+                            </div>
+                            
+                            <div class="privacy-list">
+                                <h3>Legal Requirements</h3>
+                                <p>We may disclose your information if required by law or in response to:</p>
+                                <ul>
+                                    <li>Court orders or legal processes</li>
+                                    <li>Government requests, including MSME regulatory requirements</li>
+                                    <li>To protect our rights, property, or safety</li>
+                                    <li>To comply with Udyam registration and MSME regulations</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h2>Data Security</h2>
+                            <p>We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. These measures include:</p>
+                            <ul>
+                                <li>Secure data storage and transmission protocols</li>
+                                <li>Access controls and authentication procedures</li>
+                                <li>Regular security assessments and updates</li>
+                                <li>Employee training on data protection and confidentiality</li>
+                                <li>Physical security measures for paper records</li>
+                            </ul>
+                            <p>However, no method of transmission over the internet or electronic storage is 100% secure, and we cannot guarantee absolute security.</p>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h2>Business Information and MSME Compliance</h2>
+                            <p>As a registered MSME enterprise under Udyam Registration (UDYAM-PB-19-0005943), we collect and maintain business information as required by Indian laws and regulations. This includes:</p>
+                            <ul>
+                                <li>Business registration and Udyam certification details</li>
+                                <li>Transaction records for compliance purposes</li>
+                                <li>Service records and client information for regulatory reporting</li>
+                                <li>Financial records as required by MSME regulations</li>
+                            </ul>
+                            <p>This information is maintained for the period required by law and used for legal compliance, regulatory reporting, and business operations.</p>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h2>Your Rights</h2>
+                            <p>Depending on applicable laws, you may have the following rights regarding your personal information:</p>
+                            <ul>
+                                <li><strong>Access:</strong> Request access to the personal information we hold about you</li>
+                                <li><strong>Correction:</strong> Request correction of inaccurate or incomplete information</li>
+                                <li><strong>Deletion:</strong> Request deletion of your personal information under certain circumstances</li>
+                                <li><strong>Objection:</strong> Object to processing of your personal information</li>
+                                <li><strong>Restriction:</strong> Request restriction of processing your personal information</li>
+                            </ul>
+                            <p>To exercise these rights, please contact us using the contact information provided in this policy.</p>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h2>Changes to This Privacy Policy</h2>
+                            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date below. We encourage you to review this Privacy Policy periodically for any changes.</p>
+                            <p><strong>Last Updated:</strong> November 2023</p>
+                        </div>
+                        
+                        <div class="content-block">
+                            <h2>Contact Us</h2>
+                            <p>If you have any questions about this Privacy Policy or our data practices, please contact us:</p>
+                            
+                            <div class="contact-details" style="margin-top: 20px;">
+                                <div class="contact-item">
+                                    <div class="contact-icon-large">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-text-large">
+                                        <h4>Email</h4>
+                                        <p>yashwinder.goyal@gmail.com</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon-large">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                    <div class="contact-text-large">
+                                        <h4>Phone</h4>
+                                        <p>98140 42346</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="contact-item">
+                                    <div class="contact-icon-large">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-text-large">
+                                        <h4>Address</h4>
+                                        <p>Office Colony, Nanaklana Road, Sangrur, Punjab, India - 148001</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Yashwinder Goyal & Co</h3>
+                    <p>A registered MSME enterprise providing professional financial services, risk evaluation, and damage assessment since 1999. Based in Sangrur, Punjab, serving clients across India.</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#" class="footer-nav-link" data-page="home"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#" class="footer-nav-link" data-page="about"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#" class="footer-nav-link" data-page="contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="#" class="footer-nav-link" data-page="privacy"><i class="fas fa-chevron-right"></i> Privacy Policy</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone-alt"></i> 98140 42346</p>
+                    <p><i class="fas fa-envelope"></i> yashwinder.goyal@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Office Colony, Nanaklana Road, Sangrur, Punjab - 148001</p>
+                    <p><i class="fas fa-certificate"></i> UDYAM-PB-19-0005943</p>
+                    <p><i class="fas fa-industry"></i> Micro Enterprise (MSME)</p>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 Yashwinder Goyal & Co. All Rights Reserved. | Udyam Registered MSME since 2021 | Established in 1999</p>
+                <p style="margin-top: 10px; font-size: 12px;">For any assistance, contact: District Industries Centre - Malerkotla (Punjab) | MSME-DI: Ludhiana (Punjab)</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation System
+        const pages = {
+            'home': document.getElementById('home-page'),
+            'about': document.getElementById('about-page'),
+            'contact': document.getElementById('contact-page'),
+            'privacy': document.getElementById('privacy-page')
+        };
+        
+        const navLinks = document.querySelectorAll('.nav-link');
+        const footerNavLinks = document.querySelectorAll('.footer-nav-link');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        // Function to show a specific page
+        function showPage(pageId) {
+            // Hide all pages
+            Object.values(pages).forEach(page => {
+                if (page) page.classList.remove('active');
+            });
+            
+            // Show the selected page
+            if (pages[pageId]) {
+                pages[pageId].classList.add('active');
+            }
+            
+            // Update active navigation links
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Update active footer navigation links
+            footerNavLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Update mobile navigation links
+            document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-page') === pageId) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Close mobile menu if open
+            if (mobileNav) {
+                mobileNav.classList.remove('active');
+            }
+            if (mobileMenuBtn) {
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+            document.body.style.overflow = 'auto';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+        
+        // Add click event listeners to navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+        
+        // Add click event listeners to footer navigation links
+        footerNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+        
+        // Add click event listeners to mobile navigation links
+        document.querySelectorAll('.mobile-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const pageId = this.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+        
+        // Add click event listeners to CTA buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const pageId = this.getAttribute('data-page');
+                if (pageId) {
+                    e.preventDefault();
+                    showPage(pageId);
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        if (mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', function() {
+                if (mobileNav) {
+                    mobileNav.classList.toggle('active');
+                    if (mobileNav.classList.contains('active')) {
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-times"></i>';
+                        document.body.style.overflow = 'hidden';
+                    } else {
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
+        }
+        
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            if (mobileNav && mobileMenuBtn && !mobileNav.contains(event.target) && !mobileMenuBtn.contains(event.target)) {
+                mobileNav.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Contact form submission
+        const contactForm = document.getElementById('contactPageForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Get form data
+                const name = document.getElementById('contact-name')?.value;
+                const email = document.getElementById('contact-email')?.value;
+                const subject = document.getElementById('contact-subject')?.value;
+                
+                // Show success message
+                if (name && email && subject) {
+                    alert(`Thank you, ${name}! Your inquiry has been submitted successfully. We will contact you at ${email} within 24 hours.`);
+                    contactForm.reset();
+                }
+            });
+        }
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (header) {
+                if (window.scrollY > 50) {
+                    header.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+                    header.style.padding = '0';
+                    document.querySelector('.header-container').style.padding = '12px 0';
+                } else {
+                    header.style.boxShadow = '0 2px 15px rgba(0, 0, 0, 0.1)';
+                    header.style.padding = '0';
+                    document.querySelector('.header-container').style.padding = '15px 0';
+                }
+            }
+        });
+        
+        // Initialize with home page
+        showPage('home');
+    </script>
+</body>
+</html>
